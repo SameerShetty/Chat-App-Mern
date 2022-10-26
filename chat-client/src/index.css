@@ -95,6 +95,10 @@ body {
   color: var(--color-black);
   font-family: var(--family-body);
 }
+.icon {
+  font-size: 1.2rem;
+  color: var(--color-black);
+}
 .modal-msg {
   width: 100%;
   display: flex;
@@ -190,12 +194,12 @@ form label input::placeholder {
 }
 
 .chat-section {
-  width: 80%;
+  width: 60%;
   height: 80vh;
   border-radius: 30px;
   background-color: var(--color-white);
-  box-shadow: var(--box-shadow);
-  padding: 2rem;
+  box-shadow: var(--box-shadow-hard);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,7 +229,7 @@ form label input::placeholder {
 
 .chat-window {
   width: 100%;
-  height: 100%;
+  height: 90%;
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
@@ -249,10 +253,11 @@ form label input::placeholder {
 .chat-window div .chat-box {
   width: 35%;
   padding: 0.5rem 1rem;
-  margin: 2rem 1rem;
+  margin: 1.5rem 0.5rem;
   position: relative;
   display: flex;
   align-items: flex-start;
+  box-shadow: var(--box-shadow);
 }
 #other {
   background-color: var(--color-dull-white);
@@ -284,7 +289,7 @@ form label input::placeholder {
   color: var(--color-dull-white);
 }
 .chat-section input {
-  width: 95%;
+  width: 90%;
   outline: none;
   border: none;
   background-color: var(--color-dull-white);

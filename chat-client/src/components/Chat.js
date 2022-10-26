@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { RiSendPlaneFill } from "react-icons/ri";
 
 function Chat({ socket, user, room }) {
   const [msg, setmsg] = useState("");
@@ -57,7 +58,7 @@ function Chat({ socket, user, room }) {
         style={{
           width: "100%",
           position: "absolute",
-          bottom: "0",
+          bottom: "5px",
           left: "0",
           display: "flex",
           alignItems: "center",
@@ -83,14 +84,17 @@ function Chat({ socket, user, room }) {
           className="btn"
           onClick={sendmsg}
           style={{
-            width: "3.5%",
+            width: "4.5%",
             borderRadius: "50%",
             padding: "0",
             aspectRatio: "1",
           }}
         >
           {" "}
-          S
+          <RiSendPlaneFill
+            className="icon"
+            style={{ verticalAlign: "text-bottom" }}
+          />
         </button>
       </div>
     </div>
