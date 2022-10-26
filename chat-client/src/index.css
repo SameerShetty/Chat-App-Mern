@@ -142,29 +142,32 @@ body {
   font-family: var(--family-body);
   font-size: var(--size-body);
 }
-.chat-section div {
+/* .chat-section div {
   padding: 1rem;
-  width: 30%;
+  width: 40%;
+} */
+.chat-window {
+  width: 100%;
 }
-.chat-section div:nth-child(1) {
+.chat-window #other {
   background-color: var(--color-dull-white);
   border-radius: 0 20px 20px 20px;
 }
-.chat-section div:nth-child(1) p {
+.chat-window #other p {
   color: var(--color-primary-black);
 }
-.chat-section div:nth-child(1) h2 {
+.chat-window #other h2 {
   color: var(--color-black);
 }
-.chat-section div:nth-child(2) {
+.chat-window #me {
   align-self: flex-end;
   background-color: var(--color-grey);
   border-radius: 20px 0px 20px 20px;
 }
-.chat-section div:nth-child(2) p {
+.chat-window #me p {
   color: var(--color-primary-white);
 }
-.chat-section div:nth-child(2) h2 {
+.chat-window #me h2 {
   color: var(--color-white);
 }
 .chat-section input {
