@@ -22,9 +22,7 @@ io.on("connect", (socket) => {
   socket.on("send_message", (data) => {
     socket.to(data.room).emit("receive_message", data);
   });
-  socket.on("disconnect", () => {
-    console.log("a user disconnected");
-  });
+  socket.on("disconnect", () => {});
 });
 
 // app.get("/", function (req, res) {
