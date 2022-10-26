@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { RiSendPlaneFill } from "react-icons/ri";
+import { HiUsers } from "react-icons/hi";
 
 function Chat({ socket, user, room }) {
   const [msg, setmsg] = useState("");
@@ -38,64 +39,79 @@ function Chat({ socket, user, room }) {
   }, [socket]);
 
   return (
-    <div className="chat-section">
-      <ScrollToBottom className="chat-window">
-        {msgstack.map((messagedata) => {
-          return (
-            <div
-              className="chat-box"
-              key={messagedata.actmsg * Math.random() * 10000}
-              id={user === messagedata.sender ? "me" : "other"}
-            >
-              <h2>{messagedata.sender}</h2>
-              <p>{messagedata.actmsg}</p>
-              <h4>{messagedata.time}</h4>
-            </div>
-          );
-        })}
-      </ScrollToBottom>
-      <div
-        style={{
-          width: "100%",
-          position: "absolute",
-          bottom: "5px",
-          left: "0",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-          flexWrap: "nowrap",
-        }}
-      >
-        <input
-          type="text"
-          name="message"
-          value={msg}
-          onChange={(e) => {
-            setmsg(e.target.value);
-          }}
-          onKeyDown={(e) => {
-            e.key === "Enter" && sendmsg();
-          }}
-          placeholder="Type your message..."
-          autoComplete="false"
-          spellCheck="true"
-        />{" "}
-        <button
-          className="btn"
-          onClick={sendmsg}
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        flexWrap: "wrap",
+        justifyContent: "space-around",
+      }}
+    >
+      <div style={{ width: "40%" }}>
+        <h1>
+          <HiUsers className="icon" /> Active Users
+        </h1>
+      </div>
+      <div className="chat-section">
+        <ScrollToBottom className="chat-window">
+          {msgstack.map((messagedata) => {
+            return (
+              <div
+                className="chat-box"
+                key={messagedata.actmsg * Math.random() * 10000}
+                id={user === messagedata.sender ? "me" : "other"}
+              >
+                <h2>{messagedata.sender}</h2>
+                <p>{messagedata.actmsg}</p>
+                <h4>{messagedata.time}</h4>
+              </div>
+            );
+          })}
+        </ScrollToBottom>
+        <div
           style={{
-            width: "4.5%",
-            borderRadius: "50%",
-            padding: "0",
-            aspectRatio: "1",
+            width: "100%",
+            position: "absolute",
+            bottom: "5px",
+            left: "0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            flexWrap: "nowrap",
           }}
         >
-          {" "}
-          <RiSendPlaneFill
-            className="icon"
-            style={{ verticalAlign: "text-bottom" }}
-          />
-        </button>
+          <input
+            type="text"
+            name="message"
+            value={msg}
+            onChange={(e) => {
+              setmsg(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              e.key === "Enter" && sendmsg();
+            }}
+            placeholder="Type your message..."
+            autoComplete="false"
+            spellCheck="true"
+          />{" "}
+          <button
+            className="btn"
+            onClick={sendmsg}
+            style={{
+              width: "4.5%",
+              borderRadius: "50%",
+              padding: "0",
+              aspectRatio: "1",
+            }}
+          >
+            {" "}
+            <RiSendPlaneFill
+              className="icon"
+              style={{ verticalAlign: "text-bottom" }}
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
