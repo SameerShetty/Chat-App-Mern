@@ -3,13 +3,13 @@ import "./index.css";
 import io from "socket.io-client";
 import Chat from "./components/Chat";
 
-const socket = io.connect("/login");
+const socket = io.connect("http://localhost:5000");
 
 function App() {
   const [user, setUser] = useState("");
   const [room, setRoom] = useState("");
   const [showchat, setshowchat] = useState(false);
-  const Join = () => {
+  const join = () => {
     if (user !== "" && room !== "") {
       socket.emit("join_room", room);
       setshowchat(true);
@@ -26,7 +26,6 @@ function App() {
                 id="name"
                 name="name"
                 required
-                value={user}
                 onChange={(e) => {
                   setUser(e.target.value);
                 }}
@@ -38,7 +37,6 @@ function App() {
                 type="text"
                 id="roomId"
                 name="roomId"
-                value={room}
                 onChange={(e) => {
                   setRoom(e.target.value);
                 }}
@@ -46,7 +44,7 @@ function App() {
               <span>Room Id</span>
             </label>
             <button
-              onClick={Join}
+              onClick={join}
               className="btn"
               style={{ borderradius: "15px" }}
             >

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-function Chat({ user, room, socket }) {
+function Chat({ socket, user, room }) {
   const [msg, setmsg] = useState("");
   const [msgstack, setmsgstack] = useState([]);
-  const sendmsg = () => {
+  const sendmsg = async () => {
     if (msg !== "") {
       const message = {
         room: room,
@@ -12,24 +12,27 @@ function Chat({ user, room, socket }) {
         actmsg: msg,
         time:
           new Date(Date.now()).getHours() +
-          ":" +
+          " : " +
           new Date(Date.now()).getMinutes(),
       };
-      socket.emit("send_message", message);
-      setmsgstack((prev) => {
-        return [...prev, message];
-      });
+      await socket.emit("send_message", message);
+      setmsgstack((list) => [...list, message]);
+      playSound();
       setmsg("");
     }
   };
+  const playSound = () => {
+    const audio = new Audio("../notification_sound.mp3");
+    audio.play();
+  };
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setmsgstack((prev) => {
-        return [...prev, data];
-      });
-    });
-    socket.on("disconnect", () => {
-      console.log("user disconnected");
+      playSound();
+      if (data.sender !== user) {
+        setmsgstack((prev) => {
+          return [...prev, data];
+        });
+      }
     });
   }, [socket]);
 
@@ -38,7 +41,11 @@ function Chat({ user, room, socket }) {
       <ScrollToBottom className="chat-window">
         {msgstack.map((messagedata) => {
           return (
-            <div id={user === messagedata.sender ? "me" : "other"}>
+            <div
+              className="chat-box"
+              key={messagedata.actmsg * Math.random() * 10000}
+              id={user === messagedata.sender ? "me" : "other"}
+            >
               <h2>{messagedata.sender}</h2>
               <p>{messagedata.actmsg}</p>
               <h4>{messagedata.time}</h4>
