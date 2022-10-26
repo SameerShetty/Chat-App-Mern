@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import "./index.css";
 import io from "socket.io-client";
 import Chat from "./components/Chat";
+import { ImCross } from "react-icons/im";
 
 const socket = io.connect("http://localhost:5000");
 
 function App() {
+  const [ismodal, setmodal] = useState(false);
+  const [ismodalText, setmodalText] = useState("");
   const [user, setUser] = useState("");
   const [room, setRoom] = useState("");
   const [showchat, setshowchat] = useState(false);
@@ -13,42 +16,77 @@ function App() {
     if (user !== "" && room !== "") {
       socket.emit("join_room", room);
       setshowchat(true);
+    } else {
+      setmodalText("Invalid Details !");
+      setmodal(true);
+    }
+  };
+  window.onclick = function (event) {
+    if (event.target === document.getElementById("modal-overlay")) {
+      setmodal(false);
     }
   };
   return (
     <div className="hero-wrapper">
+      <div>
+        <div className="modal" style={{ top: ismodal ? "40px" : "-500px" }}>
+          <div>
+            <ImCross
+              onClick={() => {
+                setmodal(false);
+              }}
+              className="cross"
+            />
+          </div>
+          <div className="modal-msg">
+            <p>{ismodalText}</p>
+          </div>
+        </div>
+        <div
+          className="modal-overlay"
+          id="modal-overlay"
+          style={{ display: ismodal ? "block" : "none" }}
+        ></div>
+      </div>
       {!showchat ? (
-        <div className="form-wrapper">
+        <div className="form-container">
+          <div>
+            <img className="animate-img" src="../imgs/landing.png" alt="" />
+          </div>
+
           <form>
             <label htmlFor="name">
+              Name :
               <input
                 type="text"
                 id="name"
                 name="name"
+                placeholder="Enter your name"
                 required
                 onChange={(e) => {
                   setUser(e.target.value);
                 }}
               />
-              <span>Name</span>
             </label>
             <label htmlFor="roomId">
+              Room Id :
               <input
                 type="text"
                 id="roomId"
+                placeholder="Create or Join a room"
                 name="roomId"
                 onChange={(e) => {
                   setRoom(e.target.value);
                 }}
               />
-              <span>Room Id</span>
             </label>
+
             <button
               onClick={join}
               className="btn"
-              style={{ borderradius: "15px" }}
+              style={{ margin: "1rem .5rem" }}
             >
-              Join
+              Create / Join
             </button>
           </form>
         </div>
