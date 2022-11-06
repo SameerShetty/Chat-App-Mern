@@ -35,6 +35,9 @@ function Chat({ socket, user, room }) {
           return [...prev, data];
         });
       }
+      socket.on("new_user", (data) => {
+        console.log(data);
+      });
       // socket.on("disconnected", function () {
       //   socket.emit("user_dissconnected", actUsers);
       // });

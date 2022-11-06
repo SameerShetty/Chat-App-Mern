@@ -13,8 +13,12 @@ function App() {
   const [room, setRoom] = useState("");
   const [showchat, setshowchat] = useState(false);
   const join = () => {
+    const userobject = {
+      username: user,
+      room: room,
+    };
     if (user !== "" && room !== "") {
-      socket.emit("join_room", room);
+      socket.emit("join_room", userobject);
       setshowchat(true);
     } else {
       setmodalText("Invalid Details !");
