@@ -6,7 +6,6 @@ import { HiUsers } from "react-icons/hi";
 function Chat({ socket, user, room }) {
   const [msg, setmsg] = useState("");
   const [msgstack, setmsgstack] = useState([]);
-  const [actUsers, setactUsers] = useState([]);
   const sendmsg = async () => {
     if (msg !== "") {
       const message = {
@@ -44,14 +43,6 @@ function Chat({ socket, user, room }) {
 
   return (
     <div className="chat-wrapper">
-      {/* //   <div className="active-users">
-    //     <h1>
-    //       <HiUsers className="icon" /> Active Users
-    //       {actUsers.map((activeuser) => {
-    //         return <li>{activeuser}</li>;
-    //       })}
-    //     </h1>
-    //   </div> */}
       <div className="chat-section">
         <ScrollToBottom className="chat-window">
           {msgstack.map((messagedata) => {
