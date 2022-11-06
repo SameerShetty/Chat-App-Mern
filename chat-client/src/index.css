@@ -38,6 +38,15 @@ html {
   --size-form-header: 0.8rem;
   --size-time: 0.6rem;
 }
+@media only screen and (max-width: 800px) {
+  :root {
+    --size-primary-heading: 4rem;
+    --size-sub-heading: 1.2rem;
+    --size-body: 0.9rem;
+    --size-form-header: 0.7rem;
+    --size-time: 0.5rem;
+  }
+}
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-thumb {
@@ -64,6 +73,11 @@ body {
   border-radius: 15px;
   box-shadow: var(--box-shadow);
 }
+@media only screen and (max-width: 800px) {
+  .btn {
+    padding: 14px 28px;
+  }
+}
 .animate-img {
   animation: floating 3s ease-in-out infinite;
 }
@@ -79,7 +93,19 @@ body {
     transform: translate(0, -0px);
   }
 }
-
+@media only screen and (max-width: 800px) {
+  @keyframes floating {
+    0% {
+      transform: translate(0, 0px);
+    }
+    50% {
+      transform: translate(0, 5px);
+    }
+    100% {
+      transform: translate(0, -0px);
+    }
+  }
+}
 .modal {
   width: 30%;
   height: 30%;
@@ -96,7 +122,7 @@ body {
   font-family: var(--family-body);
 }
 .icon {
-  font-size: 1.2rem;
+  font-size: var(--size-body);
   color: var(--color-black);
 }
 .modal-msg {
@@ -112,11 +138,21 @@ body {
   position: relative;
   border-radius: 10px;
 }
+@media only screen and (max-width: 800px) {
+  .modal {
+    width: 80%;
+    height: 150px;
+  }
+  .modal-msg {
+    padding: 3rem 0.5rem;
+  }
+}
 .cross {
   position: absolute;
   top: 7px;
   right: 7px;
   cursor: pointer;
+  font-size: var(--size-sub-heading);
 }
 .modal-overlay {
   position: fixed;
@@ -147,6 +183,7 @@ body {
   padding: 1.5rem 0.5rem;
   border-radius: 20px;
 }
+
 .form-container div {
   display: flex;
   align-items: center;
@@ -190,11 +227,40 @@ form label input::placeholder {
   color: var(--color-grey);
   opacity: 0.5;
   font-family: var(--family-body);
-  font-size: 1rem;
+  font-size: var(--size-body);
 }
+.chat-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+/* .active-users {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+} */
+@media only screen and (max-width: 800px) {
+  .hero-wrapper {
+    padding: 1rem 0.5rem;
+  }
+  .form-container {
+    flex-direction: column;
+  }
+  .form-container div,
+  form {
+    width: 100%;
+  }
 
+  form label {
+    padding: 0.5rem;
+  }
+}
 .chat-section {
-  width: 60%;
+  width: 70%;
   height: 80vh;
   border-radius: 30px;
   background-color: var(--color-white);
@@ -302,4 +368,29 @@ form label input::placeholder {
 .chat-section input::placeholder {
   font-size: var(--size-body);
   opacity: 0.5;
+}
+.sendicon {
+  width: 4.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (max-width: 1100px) {
+  .chat-section {
+    width: 95%;
+    height: 95vh;
+    padding: 0.5rem;
+  }
+
+  .chat-window div .chat-box {
+    width: 40%;
+    padding: 0.7rem;
+    margin: 1.2rem 0.5rem;
+  }
+  .sendicon {
+    width: 11%;
+  }
+  .chat-section input {
+    width: 75%;
+  }
 }

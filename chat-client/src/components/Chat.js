@@ -6,6 +6,7 @@ import { HiUsers } from "react-icons/hi";
 function Chat({ socket, user, room }) {
   const [msg, setmsg] = useState("");
   const [msgstack, setmsgstack] = useState([]);
+  const [actUsers, setactUsers] = useState([]);
   const sendmsg = async () => {
     if (msg !== "") {
       const message = {
@@ -35,24 +36,22 @@ function Chat({ socket, user, room }) {
           return [...prev, data];
         });
       }
+      // socket.on("disconnected", function () {
+      //   socket.emit("user_dissconnected", actUsers);
+      // });
     });
   }, [socket]);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        flexWrap: "wrap",
-        justifyContent: "space-around",
-      }}
-    >
-      <div style={{ width: "40%" }}>
-        <h1>
-          <HiUsers className="icon" /> Active Users
-        </h1>
-      </div>
+    <div className="chat-wrapper">
+      {/* //   <div className="active-users">
+    //     <h1>
+    //       <HiUsers className="icon" /> Active Users
+    //       {actUsers.map((activeuser) => {
+    //         return <li>{activeuser}</li>;
+    //       })}
+    //     </h1>
+    //   </div> */}
       <div className="chat-section">
         <ScrollToBottom className="chat-window">
           {msgstack.map((messagedata) => {
@@ -96,20 +95,16 @@ function Chat({ socket, user, room }) {
             spellCheck="true"
           />{" "}
           <button
-            className="btn"
+            className="btn sendicon"
             onClick={sendmsg}
             style={{
-              width: "4.5%",
               borderRadius: "50%",
               padding: "0",
               aspectRatio: "1",
             }}
           >
             {" "}
-            <RiSendPlaneFill
-              className="icon"
-              style={{ verticalAlign: "text-bottom" }}
-            />
+            <RiSendPlaneFill className="icon" />
           </button>
         </div>
       </div>
