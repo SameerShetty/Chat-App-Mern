@@ -45,7 +45,16 @@ function Chat({ socket, user, room }) {
   }, [socket]);
 
   return (
-    <div className="chat-wrapper">
+    <div
+      className="chat-wrapper"
+      style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
+      }}
+    >
       <div className="chat-section">
         <ScrollToBottom className="chat-window">
           {msgstack.map((messagedata) => {

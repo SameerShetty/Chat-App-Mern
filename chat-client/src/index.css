@@ -148,22 +148,9 @@ body {
   }
 }
 .cross {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  cursor: pointer;
   font-size: var(--size-sub-heading);
 }
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 998;
-  display: none;
-  background-color: rgba(0, 0, 0, 0.2);
-}
+
 .hero-wrapper {
   width: 100%;
   min-height: 100vh;
@@ -229,20 +216,7 @@ form label input::placeholder {
   font-family: var(--family-body);
   font-size: var(--size-body);
 }
-.chat-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-/* .active-users {
-  width: 30%;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  flex-direction: column;
-} */
+
 @media only screen and (max-width: 800px) {
   .hero-wrapper {
     padding: 1rem 0.5rem;

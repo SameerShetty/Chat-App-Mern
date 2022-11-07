@@ -40,6 +40,12 @@ function App() {
                 setmodal(false);
               }}
               className="cross"
+              style={{
+                position: " absolute",
+                top: "7px",
+                right: "7px",
+                cursor: "pointer",
+              }}
             />
           </div>
           <div className="modal-msg">
@@ -49,7 +55,17 @@ function App() {
         <div
           className="modal-overlay"
           id="modal-overlay"
-          style={{ display: ismodal ? "block" : "none" }}
+          style={{
+            display: ismodal ? "block" : "none",
+            position: "fixed",
+            top: "0",
+            left: "0",
+            width: "100vw",
+            height: "100vh",
+            zIndex: "998",
+            display: "none",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+          }}
         ></div>
       </div>
       {!showchat ? (
