@@ -1,21 +1,17 @@
 # Chat-App-Mern
 
-## A real time chat application which allows create or join a existing room and chat in groups.
+## A real time chat application built using Socket.io which allows users to create a room or join a existing room and chat in groups.
 
 
-![alt text](Screenshots/landing.png)
+![alt text](Screenshots/Screenshot1.png)
 
-![alt text](Screenshots/personalinfo.png)
+![alt text](Screenshots/Screenshot2.png)
 
-![alt text](Screenshots/edu.png)
+![alt text](Screenshots/Screenshot3.png)
 
-![alt text](Screenshots/achieve.png)
+![alt text](Screenshots/Screenshot4.png)
 
-![alt text](Screenshots/filled.png)
-
-![alt text](Screenshots/printwindow.png)
-
-![alt text](Screenshots/pdf.png)
+![alt text](Screenshots/Screenshot5.png)
 
 
 
